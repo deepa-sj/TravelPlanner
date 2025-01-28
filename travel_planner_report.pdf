@@ -1,0 +1,145 @@
+# AI Travel Planner – Project Report
+
+## Introduction
+
+In this project, we designed and developed an AI-powered travel planner application using OpenAI’s GPT model to generate personalized travel itineraries. The main goal of this project was to build a multi-step prompt system that simulates a conversation with the user, extracting key details and preferences, and generating a coherent, day-by-day itinerary based on these inputs.
+
+The project required prompt engineering to gather and refine user input, provide suggestions for activities, and generate a detailed itinerary that aligns with the user's budget, interests, and specific requirements such as mobility or dietary restrictions.
+
+This report details the methodology, prompt design, and results of the project. It also explains how the application works and how we refined user inputs to ensure relevant and personalized itineraries.
+
+## Methodology
+
+### Step 1: Understand the User Context
+
+The first step in building the application was to understand the user’s context. To ensure personalized itineraries, we gathered information on the following key parameters:
+
+1. **User’s Input**: The destination, trip duration, and user preferences.
+2. **Budget**: The user's budget (low, moderate, high) was considered to suggest accommodations, meals, and activities accordingly.
+3. **Trip Duration**: We gathered how many days the user would spend at the destination, which helped in planning day-by-day activities.
+4. **Destination**: The specific destination the user would be visiting, which guided the selection of activities and attractions.
+5. **Purpose**: This included the type of trip (e.g., adventure, relaxation, cultural exploration).
+6. **Preferences**: Dietary restrictions, interests (art, history, cuisine), and mobility concerns (e.g., limited walking) were essential for tailoring the itinerary.
+
+By understanding these factors, we could refine inputs and generate an itinerary that suited the user’s needs.
+
+### Step 2: Build the Prompt System
+
+The prompt system was the core component of the project. It consisted of three main components: **Input Refinement**, **Activity Suggestions**, and **Final Output Generation**.
+
+#### 2.1 Input Refinement
+In this phase, we used a system prompt to clarify or gather more details from the user if necessary. This allowed us to ensure that the itinerary met the user’s needs, especially when inputs were vague or incomplete.
+
+##### System Prompt
+The system prompt is designed to guide the AI in understanding the user’s context and refining inputs if necessary. It collects essential details such as dietary preferences, specific interests, mobility concerns, and accommodation preferences.
+
+Example:
+```text
+You are TravelGPT, an AI travel assistant. Your goal is to help the user plan a personalized itinerary. If the user's input is unclear, ask follow-up questions to clarify preferences for activities, mobility concerns, dietary restrictions, and accommodation preferences.
+```
+
+#### 2.2 Activity Suggestions
+Using multiple chained prompts, we generated activity suggestions that aligned with the user's interests and preferences. Activities were selected based on:
+1. **Top-rated attractions**: Famous sites and must-visit spots at the destination.
+2. **Hidden gems**: Less-known attractions that fit the user’s interests.
+3. **Activity timing and grouping**: Activities were planned by day, with morning, afternoon, and evening segments.
+
+##### User Prompt Example
+```text
+Generate a detailed itinerary for 5 days in Paris, considering a moderate budget, interest in art and history, and vegetarian dietary restrictions. The user prefers a central location for accommodation and has no mobility concerns.
+```
+
+#### 2.3 Output Generation
+The final output generated a complete day-by-day itinerary. This included:
+1. **Day-by-day activities**: Morning, afternoon, and evening plans.
+2. **Meals and dining suggestions**: Aligned with the user’s dietary restrictions.
+3. **Accommodation**: Suggestions based on the user’s budget and preferences (e.g., central location, budget, luxury).
+4. **Timing of activities**: Efficient planning to avoid overloading the user’s schedule.
+
+##### Final Model Response Example
+```text
+Day 1:
+- Morning: Visit the Louvre Museum (art history).
+- Afternoon: Enjoy a vegetarian lunch at Le Potager du Marais.
+- Evening: Explore Montmartre and the Sacré-Cœur Basilica.
+Accommodation: Stay at a central 3-star hotel near the Louvre.
+
+Day 2:
+- Morning: Visit Musée d'Orsay for impressionist art.
+- Afternoon: Take a walk along the Seine River and visit hidden art galleries.
+- Evening: Dinner at Le Grenier de Notre-Dame (vegetarian restaurant).
+Accommodation: Same as Day 1.
+```
+
+### Step 3: Deliverables
+
+The final deliverables included:
+
+1. **System Prompt**: Designed to gather essential details from the user and refine inputs.
+2. **User Prompt**: Used to prompt the AI for a detailed itinerary based on the user’s preferences.
+3. **Model Response**: A well-structured day-by-day itinerary.
+4. **Sample Input and Output**: A detailed example showing the input and generated itinerary.
+
+### Bonus Challenge: Handling Flexible Inputs
+
+To improve flexibility, we handled vague or incomplete inputs and refined them with additional clarification prompts. For example, if the user says, “I have a moderate budget and I want a mix of famous and offbeat places,” the system refines this to generate precise suggestions for both popular attractions and hidden gems. This ensures that the itinerary meets the user’s exact needs.
+
+Example refinement:
+```text
+Can you clarify what kind of mix you're looking for? Would you like more famous landmarks or offbeat spots for certain days? Let me know how you'd like to balance them!
+```
+
+### Evaluation Criteria
+
+The success of the project was evaluated based on several factors:
+
+- **Prompt Design**: The clarity and specificity of prompts were crucial to guide the AI and extract relevant information.
+- **Prompt Chaining**: Chained prompts ensured a coherent flow from input gathering to generating suggestions, refining responses at each step.
+- **Personalization**: The output was tailored to the user’s needs, ensuring the itinerary reflected their interests, preferences, and requirements.
+- **Documentation**: Clear and concise documentation helped explain the thought process behind the prompts and how they were structured.
+
+---
+
+## Results and Discussion
+
+### Sample Input
+```text
+Destination: Paris
+Trip Duration: 5 days
+Budget: Moderate
+Interests: Art, history, local cuisine
+Dietary Restrictions: Vegetarian
+Mobility Concerns: None
+Accommodation: Central location
+```
+
+### Sample Output
+**Day 1:**
+- **Morning**: Visit the Louvre Museum (art history).
+- **Afternoon**: Lunch at Le Potager du Marais (vegetarian-friendly).
+- **Evening**: Stroll around Montmartre and the Sacré-Cœur Basilica.
+- **Accommodation**: Central 3-star hotel near the Louvre.
+
+**Day 2:**
+- **Morning**: Explore Musée d'Orsay (impressionist art).
+- **Afternoon**: Enjoy a walk along the Seine River and visit hidden art galleries.
+- **Evening**: Dinner at Le Grenier de Notre-Dame (vegetarian).
+- **Accommodation**: Same as Day 1.
+
+This itinerary was personalized based on the user’s preferences, providing a balanced mix of famous attractions and hidden gems, while considering their dietary restrictions.
+
+### Limitations and Future Work
+
+While the system successfully generated personalized itineraries, there were some limitations:
+1. **Complex Inputs**: Complex or vague inputs still required manual clarification from the user.
+2. **Advanced Customization**: Future work could include more detailed customizations, such as multi-destination itineraries or real-time suggestions based on weather and events.
+
+Future enhancements may include:
+- Adding integration with real-time data (e.g., weather, events).
+- Improving the handling of incomplete or ambiguous inputs.
+
+---
+
+## Conclusion
+
+This project successfully developed an AI-powered travel planner that generates personalized travel itineraries using OpenAI’s GPT model. By carefully designing the prompt system, refining user inputs, and generating detailed day-by-day itineraries, we created a useful and interactive application for travelers. The project demonstrated the potential of prompt engineering to build dynamic, context-sensitive applications.

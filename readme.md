@@ -1,7 +1,3 @@
-Sure! Below is a more detailed version of your `README.md` file. It includes step-by-step instructions on how to run the code, install dependencies, and use the OpenAI API key.
-
----
-
 # AI Travel Planner
 
 This is an interactive travel itinerary generator built using OpenAI and Streamlit. The application allows users to input their travel preferences and generates a personalized itinerary, including activities, accommodations, and dining suggestions. The app takes into account factors such as budget, dietary preferences, mobility concerns, and accommodation types.

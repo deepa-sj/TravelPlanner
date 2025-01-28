@@ -17,4 +17,4 @@ Ensure you have Python 3.6+ installed on your system.
 ### Step 1: Clone the Repository
 Clone the repository to your local machine:
 ```bash
-git clone https://github.com/yourusername/AI-Travel-Planner.git
+git clone https://github.com/deepa-sj/TravelPlanner.git
